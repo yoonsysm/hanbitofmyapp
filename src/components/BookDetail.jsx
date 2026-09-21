@@ -4,9 +4,10 @@ function BookDetail({ book, onClose }) {
   const {
     title = "No Title Available",
     authors = ["Unknown Authors"],
-    imageLinks = {},
+    publishedDate = "No Date",
     description = "No description available",
-  } = book;
+    imageLinks = {},
+  } = book.volumeInfo;
   const thumbnail = imageLinks.thumbnail || "https://placehold.co/180x280";
 
   return (
@@ -25,12 +26,16 @@ function BookDetail({ book, onClose }) {
             </button> */}
           </div>
           <div className="modal-body">
-            <img src={thumbnail} alt={title} className="img-fluid mb-3" />
+            <img
+              src={imageLinks.thumbnail}
+              alt={title}
+              className="img-fluid mb-3"
+            />
             <p>
               <strong>Authors:</strong> {authors.join(", ")}
             </p>
             <p>
-              <strong>Published Date:</strong> {book.publishedDate}
+              <strong>Published Date:</strong> {publishedDate}
             </p>
             <p>
               <strong>Description:</strong> {description}

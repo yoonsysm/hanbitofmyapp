@@ -1,8 +1,8 @@
 /** @format */
 
-import SearchBar from './SearchBar';
+import SearchBar from "./SearchBar";
 
-function NavBar({ onSearch }) {
+function NavBar({onSearch}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container-fluid">

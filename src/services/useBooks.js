@@ -6,6 +6,9 @@ import fetchBooks from "./api-client";
 function useBooks(initialQuery) {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState(initialQuery);
+  const [apikey, setApikey] = useState(
+    "AIzaSyCpziw4yOfirNkD3FWLauy3PXYbyCGwV3A",
+  );
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -14,7 +17,7 @@ function useBooks(initialQuery) {
     async function fetchBooksData(query) {
       setLoading(true);
       try {
-        const items = await fetchBooks(query, controller);
+        const items = await fetchBooks(query, apikey, controller);
         setBooks(items);
       } catch (error) {
         if (error.name !== "AbortError") {
@@ -33,7 +36,8 @@ function useBooks(initialQuery) {
     // return () => {
     //   controller.abort();
     // };
-  }, [searchTerm]);
+
+  }, [searchTerm, apikey]);
 
   return { books, loading, setSearchTerm };
 }

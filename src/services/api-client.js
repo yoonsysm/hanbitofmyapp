@@ -1,23 +1,26 @@
 /** @format */
 
-const BASE_URL = 'https://www.googleapis.com/books/v1';
+const BASE_URL = "https://www.googleapis.com/books/v1";
 
-async function fetchBooks(query, controller) {
+async function fetchBooks(query, apikey, controller) {
   try {
-    const response = await fetch(`${BASE_URL}/volumes?q=${query}`, {
-      signal: controller.signal,
-    });
+    const response = await fetch(
+      `${BASE_URL}/volumes?q=${query}&key=${apikey}`,
+      {
+        signal: controller.signal,
+      },
+    );
     if (!response.ok) {
       throw new Error(`API call failed: ${response.status}`);
     }
     const data = await response.json();
     return data.items || [];
   } catch (error) {
-    if (error.name === 'AbortError') {
-      console.log('Fetch aborted');
+    if (error.name === "AbortError") {
+      console.log("Fetch aborted");
     } else {
-      console.error('Error fetching books:', error.message);
-      throw error;
+      console.error("Error fetching books:", error.message);
+      throw error
     }
   }
 }

@@ -1,12 +1,14 @@
 /** @format */
 
-import BookCard from './BookCard';
+import BookCard from "./BookCard";
 
-function BookList({ books, onSeeMore }) {
+//import BookCard from './BookCard';
+
+function BookList({ books, onSeeMore}) {
   return (
     <div className="row mt-5">
       {books.map((book) => (
-        <BookCard key={book.id} book={book} onSeeMore={onSeeMore} />
+        <BookCard key={book.id} book={book} onSeeMore={onSeeMore}/>
       ))}
     </div>
   );

@@ -1,5 +1,5 @@
 /** @format */
-import "react-loading-skeleton/dist/skeleton.css";
+
 function BookCard({ book, onSeeMore }) {
   const {
     title = "No Title Available",
@@ -11,11 +11,16 @@ function BookCard({ book, onSeeMore }) {
   return (
     <div className="col-md-4 mb-3">
       <div className="card">
-        <img className="card-img-top" src={thumbnail} alt={title} />
+        <img
+          className="card-img-top"
+          src={thumbnail}
+          alt={title}
+        />
         <div className="card-body">
+          <h5 className="card-title">{title}</h5>
           <p className="card-text">{authors.join(", ")}</p>
           <button onClick={() => onSeeMore(book)} className="btn btn-primary">
-            {" "}
+            {' '}
             See More
           </button>
         </div>
