@@ -1,8 +1,9 @@
 /** @format */
 
 const BASE_URL = "https://www.googleapis.com/books/v1";
+const apikey = import.meta.env.VITE_API_KEY;
 
-async function fetchBooks(query, apikey, controller) {
+async function fetchBooks(query, controller) {
   try {
     const response = await fetch(
       `${BASE_URL}/volumes?q=${query}&key=${apikey}`,
